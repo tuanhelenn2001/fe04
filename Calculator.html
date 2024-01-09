@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        table td {
+            padding: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            margin-right: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Simple Calculator</h3>
+    <form action="">
+        <table>
+            <tr>
+                <td>
+                    <label for="num1">Num 1</label>
+                    <input id="num1" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="num2">Num 2</label>
+                    <input id="num2" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="result">Result:</label>
+                    <input type="text" id="result" readonly />
+                </td>
+            </tr>
+        </table>
+        <button id="add">+</button>
+        <button id="subtract">-</button>
+        <button id="multiply">*</button>
+        <button id="divide">/</button>
+    </form>
+
+    <script>
+        // Lấy reference đến các phần tử trên trang web
+        var firstNumberInput = document.getElementById('num1');
+        var secondNumberInput = document.getElementById('num2');
+        var addButton = document.getElementById('add');
+        var subtractButton = document.getElementById('subtract');
+        var multiplyButton = document.getElementById('multiply');
+        var divideButton = document.getElementById('divide');
+        var resultDisplay = document.getElementById('result');
+
+        // Thêm sự kiện click cho nút cộng
+        addButton.addEventListener('click', function () {
+            // Thực hiện phép cộng
+            var sum = parseInt(firstNumberInput.value) + parseInt(secondNumberInput.value);
+            resultDisplay.value = sum;
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+            return false; // Ngăn chặn hành vi mặc định của form (nếu có)
+        });
+
+        // Thêm sự kiện click cho nút trừ
+        subtractButton.addEventListener('click', function () {
+            // Thực hiện phép trừ
+            var difference = parseInt(firstNumberInput.value) - parseInt(secondNumberInput.value);
+            resultDisplay.value = difference;
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+            return false; // Ngăn chặn hành vi mặc định của form (nếu có)
+        });
+
+        // Thêm sự kiện click cho nút nhân
+        multiplyButton.addEventListener('click', function () {
+            // Thực hiện phép nhân
+            var product = parseInt(firstNumberInput.value) * parseInt(secondNumberInput.value);
+            resultDisplay.value = product;
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+            return false; // Ngăn chặn hành vi mặc định của form (nếu có)
+        });
+
+        // Thêm sự kiện click cho nút chia
+        divideButton.addEventListener('click', function () {
+            // Thực hiện phép chia
+            var quotient = parseInt(firstNumberInput.value) / parseInt(secondNumberInput.value);
+            resultDisplay.value = quotient;
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của button
+            return false; // Ngăn chặn hành vi mặc định của form (nếu có)
+        });
+    </script>
+</body>
+
+</html>

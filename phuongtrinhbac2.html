@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Phương Trình Bậc 2</title>
+    <link rel="stylesheet" href="ptb2.css" />
+    <style>
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <h2>Giải Phương Trình Bậc 2</h2>
+
+    <form>
+        <label for="a">Nhập a:</label>
+        <input type="text" id="a" placeholder="Nhập giá trị của a" required>
+        
+        <label for="b">Nhập b:</label>
+        <input type="text" id="b" placeholder="Nhập giá trị của b" required>
+        
+        <label for="c">Nhập c:</label>
+        <input type="text" id="c" placeholder="Nhập giá trị của c" required>
+
+        <button type="button" onclick="giaiPhuongTrinh()">Giải Phương Trình</button>
+    </form>
+
+    <p id="thongBao"></p>
+    <p id="delta"></p>
+    <p id="nghiem"></p>
+
+    <script>
+        function giaiPhuongTrinh() {
+            // Truy xuất giá trị từ các ô nhập liệu
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var c = parseFloat(document.getElementById('c').value);
+
+            // Kiểm tra dữ liệu nhập vào
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById('thongBao').innerHTML = 'Vui lòng nhập đúng giá trị số.';
+                return;
+            } else {
+                document.getElementById('thongBao').innerHTML = '';
+            }
+
+            // Tính delta và nghiệm
+            var delta = b * b - 4 * a * c;
+            var x1, x2;
+
+            if (delta > 0) {
+                x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                document.getElementById('nghiem').innerHTML = 'Nghiệm 1: ' + x1.toFixed(2) + ', Nghiệm 2: ' + x2.toFixed(2);
+            } else if (delta == 0) {
+                x1 = x2 = -b / (2 * a);
+                document.getElementById('nghiem').innerHTML = 'Nghiệm kép: ' + x1.toFixed(2);
+            } else {
+                document.getElementById('nghiem').innerHTML = 'Phương trình không có nghiệm thực.';
+            }
+
+            document.getElementById('delta').innerHTML = 'Delta: ' + delta.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
